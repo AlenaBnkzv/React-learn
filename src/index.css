@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.app-header {
+  height: 12vh;
+}
+.app-nav,
+.app-content{
+  height: 88vh;
+}
+.nav-link {
+  color: #ffffff;
+}
