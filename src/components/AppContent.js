@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import Text from './Text';
 import Nav from "./Nav";
-import FormControl from "./FormControl";
+import FormControlWrapper from "./FormControlWrapper";
+import Test from "./FormControlWrapper";
 
 class AppContent extends Component {
     render() {
@@ -14,8 +15,9 @@ class AppContent extends Component {
                     </div>
                     <div className="col-lg-9">
                         <div className="app-content bg-light">
-                            <Route  exact path="/" component={Text}/>
-                            <Route path="/formControl" component={FormControl}/>
+                            <Route exact path="/" component={Text}/>
+                            <Route path="/formControl" component={FormControlWrapper}/>
+                            <Route path="/Test" component={Test}/>
                         </div>
                     </div>
                 </div>

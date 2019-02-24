@@ -10,10 +10,7 @@ class Nav extends Component {
                         <Link to='/'>Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='/content'>Content</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to='/formControl'>Inputs</Link>
+                        <Link to='/formControl'>Form controls</Link>
                     </li>
                 </ul>
             </nav>
