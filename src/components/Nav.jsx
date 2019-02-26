@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+// unused
+// add whitespaces (depends on codestyle), not mixed!!!
+import { Link } from 'react-router-dom';
 
 class Nav extends Component {
     render() {

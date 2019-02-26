@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 class FormControl extends Component {
-    render (){
+    // formatting
+    render() {
         return (
             <div className="form-group">
                 <div className="p-3">

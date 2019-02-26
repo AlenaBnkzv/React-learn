@@ -1,35 +1,46 @@
-import React, { Component } from 'react';
+// unused
+import React from 'react';
 import FormControl from "./FormControl";
 
 class FormControlWrapper extends React.Component {
     state = {
-        numWrapper: 0
+		// set to 1
+        numWrapper: 1
     };
-
-    render() {
-        const wrappers = [];
-
-        for (let i = 0; i < this.state.numWrapper; i += 1) {
-            wrappers.push(<ParentWrapper key={i} number={i} />);
-        }
-
-        return (
-            <ParentWrapper addFormControl={this.onAddFormControlWrapper}>{wrappers}</ParentWrapper>
-        );
-    }
 
     onAddFormControlWrapper = () => {
+	  console.log('onAddFormControlWrapper')
+		// user es6 features (destructuring)
+		const { numWrapper } = this.state;
         this.setState({
-            numWrapper: this.state.numWrapper + 1
+            numWrapper: numWrapper + 1
         });
-    };
+	};
+
+	// render always in the end
+	render() {
+		const wrappers = [];
+
+		for (let i = 0; i < this.state.numWrapper; i += 1) {
+			// missed addFormControl prop
+			wrappers.push(<ParentWrapper key={i} number={i} addFormControl={this.onAddFormControlWrapper} />);
+		}
+
+		return (
+			// div is enough
+			<div>{wrappers}</div>
+		);
+	}
 }
 
+// to separate component!
 const ParentWrapper = props => (
+	// layout
+	// def length 120 symbols
+  	// whitespace before />
     <div className="form-group">
-        <FormControl/>
-        <a className="btn btn-md btn-outline-success mt-2 mb-2"
-           onClick={props.addFormControl}>+</a>
+        <FormControl />
+		<button className="btn btn-md btn-outline-success mt-2 mb-2" onClick={props.addFormControl}>+</button>
         <div>{props.children}</div>
     </div>
 );

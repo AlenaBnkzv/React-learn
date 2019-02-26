@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+// unused!!!!
 import Header from './Header';
 import AppContent from './AppContent';
 
 class App extends Component {
+  // whitespace before />
   render() {
     return (
       <div className="App">
-        <Header/>
-        <AppContent/>
+        <Header />
+        <AppContent />
       </div>
     );
   }
