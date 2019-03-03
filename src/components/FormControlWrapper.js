@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormControl from "./FormControl";
+import ParentWrapper from "./ParentWrapper";
 
 class FormControlWrapper extends React.Component {
     state = {
@@ -13,25 +13,34 @@ class FormControlWrapper extends React.Component {
         });
     };
 
+    onRemoveFormControlWrapper = () => {
+        const { numWrapper } = this.state;
+        this.setState({
+            numWrapper: numWrapper - 1
+        });
+    };
+
+    onAddItem = () => {
+        const { numWrapper } = this.state;
+        this.setState(state => {
+            numWrapper: state.numWrapper.concat(state.numWrapper);
+
+            return {numWrapper};
+        });
+    };
+
     render() {
-         const wrappers = [];
-
-         for (let i = 0; i < this.state.numWrapper; i += 1) {
-             wrappers.push(<ParentWrapper key={i} number={i} addFormControl={this.onAddFormControlWrapper} />);
-         }
-
+        const wrappers = [];
          return (
-             <div>{wrappers}</div>
+           <div>
+               {
+                wrappers.map((item, index) => {
+                    return <ParentWrapper key={item} number={index} addFormControl={this.onAddFormControlWrapper} removeFormControl={this.onRemoveFormControlWrapper} />
+                })
+              }
+           </div>
          );
     }
 }
-
-const ParentWrapper = props => (
-    <div className="form-group">
-        <FormControl />
-        <button className="btn btn-md btn-outline-success mt-2 mb-2" onClick={props.addFormControl}>+</button>
-        <div>{props.children}</div>
-    </div>
-);
 
 export default FormControlWrapper;
