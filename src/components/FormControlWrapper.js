@@ -2,21 +2,25 @@ import React, { Component } from 'react';
 import ParentWrapper from "./ParentWrapper";
 
 class FormControlWrapper extends React.Component {
+    counter = 0;
     state = {
-        numWrapper: 1
+      numWrapper: [this.counter]
     };
 
     onAddFormControlWrapper = () => {
         const { numWrapper } = this.state;
+        this.counter = ++this.counter;
+        numWrapper.push(this.counter);
         this.setState({
-            numWrapper: numWrapper + 1
+          numWrapper
         });
     };
 
-    onRemoveFormControlWrapper = () => {
+    onRemoveFormControlWrapper = (index) => {
         const { numWrapper } = this.state;
+        numWrapper.splice(index, 1);
         this.setState({
-            numWrapper: numWrapper - 1
+            numWrapper
         });
     };
 
@@ -30,12 +34,11 @@ class FormControlWrapper extends React.Component {
     };
 
     render() {
-        const wrappers = [];
          return (
            <div>
                {
-                wrappers.map((item, index) => {
-                    return <ParentWrapper key={item} number={index} addFormControl={this.onAddFormControlWrapper} removeFormControl={this.onRemoveFormControlWrapper} />
+               this.state.numWrapper.map((item, index) => {
+                 return <ParentWrapper isLast={this.state.numWrapper.length - 1 === index} key={item} number={index} addFormControl={this.onAddFormControlWrapper} removeFormControl={this.onRemoveFormControlWrapper} />
                 })
               }
            </div>
