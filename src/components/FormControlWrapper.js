@@ -24,14 +24,14 @@ class FormControlWrapper extends React.Component {
         });
     };
 
-    onAddItem = () => {
+    /*onAddItem = () => {
         const { numWrapper } = this.state;
         this.setState(state => {
             numWrapper: state.numWrapper.concat(state.numWrapper);
 
             return {numWrapper};
         });
-    };
+    };*/
 
     render() {
          return (
