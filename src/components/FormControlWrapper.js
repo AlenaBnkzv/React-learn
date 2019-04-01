@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import ParentWrapper from "./ParentWrapper";
+import FormControlInnerWrapper from "./FormControlInnerWrapper";
 
 class FormControlWrapper extends React.Component {
     counter = 0;
     state = {
-      numWrapper: [this.counter]
+        numWrapper: [this.counter]
     };
 
     onAddFormControlWrapper = () => {
@@ -12,7 +12,7 @@ class FormControlWrapper extends React.Component {
         this.counter = ++this.counter;
         numWrapper.push(this.counter);
         this.setState({
-          numWrapper
+            numWrapper
         });
     };
 
@@ -24,26 +24,21 @@ class FormControlWrapper extends React.Component {
         });
     };
 
-    /*onAddItem = () => {
-        const { numWrapper } = this.state;
-        this.setState(state => {
-            numWrapper: state.numWrapper.concat(state.numWrapper);
-
-            return {numWrapper};
-        });
-    };*/
-
     render() {
-         return (
-           <div>
-               {
-               this.state.numWrapper.map((item, index) => {
-                 return <ParentWrapper isLast={this.state.numWrapper.length - 1 === index} key={item} number={index} addFormControl={this.onAddFormControlWrapper} removeFormControl={this.onRemoveFormControlWrapper} />
-                })
-              }
-           </div>
-         );
+        return (
+            <div>
+                {
+                    this.state.numWrapper.map((item, index) => {
+                        return <FormControlInnerWrapper isFirst={this.state.numWrapper.length  > 1 ? false : this.props.isFirst} isLast={this.state.numWrapper.length - 1 === index} key={item} number={index} addFormControl={this.onAddFormControlWrapper} removeFormControl={(index)=>this.onRemoveFormControlWrapper(index)} />
+                    })
+                }
+            </div>
+        );
     }
+}
+
+FormControlWrapper.defaultProps = {
+    isFirst: true,
 }
 
 export default FormControlWrapper;

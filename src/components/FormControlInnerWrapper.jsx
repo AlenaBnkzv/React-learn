@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import FormControl from "./FormControl";
+import FormControl from "./FormControlInput";
 import FormControlWrapper from "./FormControlWrapper";
 import AddButton from "./AddButton";
 
-class ParentWrapper extends React.Component {
+class FormControlInnerWrapper extends React.Component {
     state = {
         isHidden: true,
-        isShowPlusButton: true,
+        isPlusButtonShown: true,
     }
 
     toggleHidden () {
         this.setState({
             isHidden: !this.state.isHidden,
-            isShowPlusButton: false,
+            isPlusButtonShown: false,
         })
+    }
+
+    removeFormControl = () => {
+        if(!this.props.isFirst) {
+            this.props.removeFormControl(this.props.number)
+        }
     }
 
     render() {
@@ -24,8 +30,8 @@ class ParentWrapper extends React.Component {
                         <FormControl />
                     </div>
                     <div className="col-lg-3">
-                        <button type="button" className="btn btn-sm btn-outline-danger ml-1 mr-1" onClick={() => this.props.removeFormControl(this.props.number)}>-</button>
-                        {this.state.isShowPlusButton && <button type="button" className="btn btn-sm btn-outline-success ml-1 mr-1" onClick={() => this.toggleHidden()}>+</button>}
+                        <button type="button" className="btn btn-sm btn-outline-danger ml-1 mr-1" onClick={this.removeFormControl}>-</button>
+                        {this.state.isPlusButtonShown && <button type="button" className="btn btn-sm btn-outline-success ml-1 mr-1" onClick={() => this.toggleHidden()}>+</button>}
                     </div>
                 </div>
                 {
@@ -35,11 +41,11 @@ class ParentWrapper extends React.Component {
                     </div>
                 }
                 <div className="ml-4">
-                    {!this.state.isHidden && <FormControlWrapper />}
+                    {!this.state.isHidden && <FormControlWrapper isFirst={false} />}
                 </div>
             </div>
         );
     }
 }
 
-export default ParentWrapper;
+export default FormControlInnerWrapper;
