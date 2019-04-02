@@ -19,6 +19,9 @@ class FormControlWrapper extends React.Component {
     onRemoveFormControlWrapper = (index) => {
         const { numWrapper } = this.state;
         numWrapper.splice(index, 1);
+        if (!numWrapper.length) {
+          this.props.f1();
+        }
         this.setState({
             numWrapper
         });

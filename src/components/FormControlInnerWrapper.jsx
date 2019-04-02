@@ -5,14 +5,12 @@ import AddButton from "./AddButton";
 
 class FormControlInnerWrapper extends React.Component {
     state = {
-        isHidden: true,
-        isPlusButtonShown: true,
+        empty: true
     }
 
     toggleHidden () {
         this.setState({
-            isHidden: !this.state.isHidden,
-            isPlusButtonShown: false,
+          empty: false
         })
     }
 
@@ -20,6 +18,12 @@ class FormControlInnerWrapper extends React.Component {
         if(!this.props.isFirst) {
             this.props.removeFormControl(this.props.number)
         }
+    }
+
+    f1() {
+      this.setState({
+        empty: true
+      })
     }
 
     render() {
@@ -31,7 +35,7 @@ class FormControlInnerWrapper extends React.Component {
                     </div>
                     <div className="col-lg-3">
                         <button type="button" className="btn btn-sm btn-outline-danger ml-1 mr-1" onClick={this.removeFormControl}>-</button>
-                        {this.state.isPlusButtonShown && <button type="button" className="btn btn-sm btn-outline-success ml-1 mr-1" onClick={() => this.toggleHidden()}>+</button>}
+                        {this.state.empty && <button type="button" className="btn btn-sm btn-outline-success ml-1 mr-1" onClick={() => this.toggleHidden()}>+</button>}
                     </div>
                 </div>
                 {
@@ -41,7 +45,7 @@ class FormControlInnerWrapper extends React.Component {
                     </div>
                 }
                 <div className="ml-4">
-                    {!this.state.isHidden && <FormControlWrapper isFirst={false} />}
+                  {!this.state.empty && <FormControlWrapper f1={() => this.f1()} isFirst={false} />}
                 </div>
             </div>
         );
