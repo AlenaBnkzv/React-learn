@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 
+/**
+ * Represents form control text input.
+ * @memberof FormControlInnerWrapper component
+ * @class FormControl
+ */
 class FormControl extends Component {
 
     render() {

@@ -3,24 +3,42 @@ import FormControl from "./FormControlInput";
 import FormControlWrapper from "./FormControlWrapper";
 import AddButton from "./AddButton";
 
+/**
+ * Represents a child wrapper.
+ *
+ * @class FormControlInnerWrapper
+ *
+ */
 class FormControlInnerWrapper extends React.Component {
     state = {
         empty: true
     }
 
-    toggleHidden () {
+    /**
+     * Changes the visibility of adding child wrappers button
+     *
+     */
+    toggleHidden = () => {
         this.setState({
           empty: false
         })
     }
 
+    /**
+     * Deletes wrappers besides the first
+     *
+     */
     removeFormControl = () => {
         if(!this.props.isFirst) {
             this.props.removeFormControl(this.props.number)
         }
     }
 
-    f1() {
+    /**
+     * Defines if the main wrapper includes child wrappers
+     *
+     */
+    defineChildWrappers = () => {
       this.setState({
         empty: true
       })
@@ -45,7 +63,7 @@ class FormControlInnerWrapper extends React.Component {
                     </div>
                 }
                 <div className="ml-4">
-                  {!this.state.empty && <FormControlWrapper f1={() => this.f1()} isFirst={false} />}
+                  {!this.state.empty && <FormControlWrapper defineChildWrappers={() => this.defineChildWrappers()} isFirst={false} />}
                 </div>
             </div>
         );

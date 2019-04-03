@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/**
+ * Represents the button that adds wrappers for the first level.
+ * @memberof FormControlInnerWrapper component
+ * @class AddButton
+ */
 class AddButton extends React.Component {
 
     render() {

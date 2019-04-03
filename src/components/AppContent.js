@@ -5,6 +5,12 @@ import Nav from "./Nav";
 import FormControlWrapper from "./FormControlWrapper";
 import Test from "./FormControlWrapper";
 
+/**
+ * Represents the content .
+ * @memberof App component
+ * @class AppContent
+ *
+ */
 class AppContent extends Component {
 
     render() {

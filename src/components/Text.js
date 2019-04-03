@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/**
+ * Represents Text .
+ * @memberof AppContent component
+ * @class Text
+ */
 class Text extends Component {
     render() {
         return (
