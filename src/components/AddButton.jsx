@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Represents the button that adds wrappers for the first level.
@@ -12,6 +13,10 @@ class AddButton extends React.Component {
             <button className="btn btn-md btn-outline-success mt-2 mb-2 ml-3" onClick={() => this.props.addFormControl()}>+</button>
         );
     }
+}
+
+AddButton.propTypes = {
+    addFormControl: PropTypes.func,
 }
 
 export default AddButton;

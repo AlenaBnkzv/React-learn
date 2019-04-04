@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 /**
  * Represents form control text input.
@@ -9,7 +9,7 @@ class FormControl extends Component {
 
     render() {
         return (
-            <input type="text" className="form-control-sm"/>
+            <input type="text" className="form-control-sm" />
         );
     }
 }
