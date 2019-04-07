@@ -66,3 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### `npm install jsdoc -g`
+
+Install the JSDoc globally
+
+### `jsdoc src -r -d docs`
+
+Generates JSDoc in the doc folder
