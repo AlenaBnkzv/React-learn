@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 /**
- * Represents Text .
+ * Represents Text.
  * @memberof AppContent component
  * @class Text
  */

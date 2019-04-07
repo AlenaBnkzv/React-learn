@@ -5,9 +5,7 @@ import AddButton from "./AddButton";
 
 /**
  * Represents a child wrapper.
- *
  * @class FormControlInnerWrapper
- *
  */
 class FormControlInnerWrapper extends React.Component {
     state = {
@@ -16,7 +14,6 @@ class FormControlInnerWrapper extends React.Component {
 
     /**
      * Changes the visibility of adding child wrappers button
-     *
      */
     changeVisibility = () => {
         this.setState({
@@ -26,7 +23,6 @@ class FormControlInnerWrapper extends React.Component {
 
     /**
      * Deletes wrappers besides the first
-     *
      */
     removeFormControl = () => {
         const {isFirst, number, removeFormControl} = this.props;
@@ -37,7 +33,6 @@ class FormControlInnerWrapper extends React.Component {
 
     /**
      * Defines if the main wrapper includes child wrappers
-     *
      */
     defineChildWrappers = () => {
       this.setState({
@@ -59,9 +54,9 @@ class FormControlInnerWrapper extends React.Component {
                 </div>
                 {
                     this.props.isLast &&
-                    <div className="row no-gutters">
-                        <AddButton addFormControl={this.props.addFormControl} />
-                    </div>
+                        <div className="row no-gutters">
+                            <AddButton addFormControl={this.props.addFormControl} />
+                        </div>
                 }
                 <div className="ml-4">
                   {!this.state.empty && <FormControlWrapper defineChildWrappers={() => this.defineChildWrappers()} isFirst={false} />}

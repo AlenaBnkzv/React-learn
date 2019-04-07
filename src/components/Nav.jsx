@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * Represents navigation .
+ * Represents navigation.
  * @memberof AppContent component
  * @class Nav
  */

@@ -6,10 +6,9 @@ import FormControlWrapper from "./FormControlWrapper";
 import Test from "./FormControlWrapper";
 
 /**
- * Represents the content .
+ * Represents the content.
  * @memberof App component
  * @class AppContent
- *
  */
 class AppContent extends Component {
 
