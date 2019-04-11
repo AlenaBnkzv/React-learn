@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/**
+ * Represents the header , includes search form.
+ * @memberof App component
+ * @class Header
+ */
 class Header extends Component {
     render() {
         return (

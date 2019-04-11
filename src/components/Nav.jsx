@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Represents navigation.
+ * @memberof AppContent component
+ * @class Nav
+ */
 class Nav extends Component {
     render() {
         return (

@@ -1,37 +1,82 @@
-import React, { Component } from 'react';
-import FormControl from "./FormControl";
+import React from 'react';
+import PropTypes from 'prop-types';
+import FormControlInnerWrapper from "./FormControlInnerWrapper";
 
+/**
+ * Represents a main wrapper.
+ * @class FormControlWrapper
+ */
 class FormControlWrapper extends React.Component {
+    counter = 0;
     state = {
-        numWrapper: 1
+        numWrapper: [this.counter]
     };
 
+    /**
+     * Adds wrappers
+     */
     onAddFormControlWrapper = () => {
-        const { numWrapper } = this.state;
+        const {numWrapper} = this.state;
+        this.counter = ++this.counter;
+        numWrapper.push(this.counter);
         this.setState({
-            numWrapper: numWrapper + 1
+            numWrapper
         });
     };
 
+    /**
+     * Deletes wrappers
+     * @prop {Bool} defineChildWrappers - defines if the wrapper includes child wrappers
+     */
+    onRemoveFormControlWrapper = (index) => {
+        const { numWrapper } = this.state;
+        numWrapper.splice(index, 1);
+        if (!numWrapper.length) {
+            this.props.defineChildWrappers();
+        }
+        this.setState({
+            numWrapper
+        });
+    };
+
+    /**
+     * Renders the child component FormControlInnerWrapper .
+     * @prop {Bool} isFirst - defines if the element is first in array default value is true
+     * @prop {Number} isLast - defines the last element in array
+     * @prop {Func} addFormControl - adds wrappers
+     * @prop {Func} removeFormControl - deletes wrappers by index
+     */
     render() {
-         const wrappers = [];
+        const { isFirst } = this.props;
+        const { numWrapper } = this.state;
 
-         for (let i = 0; i < this.state.numWrapper; i += 1) {
-             wrappers.push(<ParentWrapper key={i} number={i} addFormControl={this.onAddFormControlWrapper} />);
-         }
-
-         return (
-             <div>{wrappers}</div>
-         );
+        return (
+            <div>
+                {
+                    this.state.numWrapper.map((item, index) =>
+                        <FormControlInnerWrapper
+                            isFirst={numWrapper.length > 1 ? false : isFirst}
+                            isLast={numWrapper.length - 1 === index}
+                            key={item}
+                            number={index}
+                            addFormControl={this.onAddFormControlWrapper}
+                            removeFormControl={(index) => this.onRemoveFormControlWrapper(index)}
+                        />
+                    )
+                }
+            </div>
+        );
     }
 }
 
-const ParentWrapper = props => (
-    <div className="form-group">
-        <FormControl />
-        <button className="btn btn-md btn-outline-success mt-2 mb-2" onClick={props.addFormControl}>+</button>
-        <div>{props.children}</div>
-    </div>
-);
+FormControlWrapper.propTypes = {
+    isFirst: PropTypes.bool,
+    defineChildWrappers: PropTypes.func,
+};
+
+FormControlWrapper.defaultProps = {
+    isFirst: true,
+    defineChildWrappers: null,
+}
 
 export default FormControlWrapper;
